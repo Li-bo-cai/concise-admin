@@ -1,0 +1,189 @@
+@import "./element-variables.scss";
+HTML,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+p,
+blockquote,
+pre,
+form,
+fieldset,
+table,
+th,
+td {
+    border: none;
+    font-family: "微软雅黑", "黑体", "宋体";
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    color: #333;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+a {
+    text-decoration: none;
+}
+a:link {
+    color: #fff;
+}
+a:visited {
+    color: #fff;
+}
+a:hover {
+    color: #fff;
+}
+a:active {
+    color: #fff;
+}
+input::-ms-clear {
+    display: none;
+}
+input::-ms-reveal {
+    display: none;
+}
+input {
+    -webkit-appearance: none;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+input::-webkit-input-placeholder {
+    color: #ccc;
+}
+input::-ms-input-placeholder {
+    color: #ccc;
+}
+input::-moz-placeholder {
+    color: #ccc;
+}
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+}
+button[disabled],
+input[disabled] {
+    cursor: default;
+}
+img {
+    border: none;
+}
+ul,
+ol,
+li {
+    list-style-type: none;
+}
+/* color */
+.c409eff {
+    color: #409eff;
+}
+.cbbb {
+    color: #bbbbbb;
+}
+/* font */
+.ftsm {
+    font-size: small;
+}
+.df-fr {
+    display: flex;
+    flex-direction: row;
+}
+.df-fc {
+    display: flex;
+    flex-direction: column;
+}
+.df-ac {
+    display: flex;
+    align-items: center;
+}
+.df-jcsb-ac {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.df-jcsc-ac {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.df-jcsa-ac {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tac {
+    text-align: center;
+}
+
+// 定义字体(px)单位
+@each $str, $long in primary $--color-primary, success $--color-success, danger $--color-danger,
+    warning $--color-warning
+{
+    .pointer-#{$str} {
+        cursor: pointer;
+        &:hover {
+            color: $long;
+        }
+    }
+}
+
+// 定义字体(px)单位，小于20都为px单位字体
+@for $i from 11 to 30 {
+    .fs#{$i} {
+        font-size: $i + px;
+    }
+}
+
+// 定义margin 和 padding
+@for $i from 0 to 200 {
+    .m#{$i} {
+        margin: $i + px !important;
+    }
+
+    .mlr#{$i} {
+        margin: 0 $i + px !important;
+    }
+
+    .p#{$i} {
+        padding: $i + px !important;
+    }
+
+    .plr#{$i} {
+        padding: 0 $i + px !important;
+    }
+
+    @each $short, $long in l left, t top, r right, b bottom {
+        .m#{$short}#{$i} {
+            margin-#{$long}: $i + px !important;
+        }
+        .p#{short}#{$i} {
+            padding-#{$long}: $i + px !important;
+        }
+    }
+}

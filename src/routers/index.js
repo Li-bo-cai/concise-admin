@@ -1,22 +1,27 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-
-const routes = [
-    {
-        path: '/',
-        component: () => import('../views/Layout/Layout.vue'),
-        redirect: '/home',
-        children: [
-            {
-                path: '/home',
-                component: () => import('../views/pages/home/index.vue')
-            },
-        ]
-    },
-]
+import { constantRoutes } from "./constantRoutes";
+import { asyncRouter } from "./asyncRoutes";
 
 // 实例
-export default createRouter({
+const router = createRouter({
     history: createWebHashHistory(),
-    routes,
+    routes: [...constantRoutes, ...asyncRouter],
 })
 
+router.beforeEach((to, from, next) => {
+    // const token = sessionStorage.getItem('Token')
+    // if (token) {
+    //     next()
+    // } else {
+    //     if (to.path === '/login') {
+    //         next()
+    //     } else {
+    //         router.replace('/login')
+    //     }
+    // }
+    // state.router = 15
+    next();
+    // setValue("router", router)
+})
+
+export default router

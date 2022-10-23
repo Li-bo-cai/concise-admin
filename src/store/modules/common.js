@@ -1,15 +1,18 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { reactive } from 'vue'
+import { constantRoutes } from '../../routers/constantRoutes'
+import { asyncRouter } from '../../routers/asyncRoutes'
 
 // 使用setup模式定义
 const common = defineStore('common', () => {
-    const count = ref(1)
-
-    function increment() {
-        count.value++
+    const state = reactive({
+        router: [...constantRoutes, ...asyncRouter],
+    })
+    const setValue = (name, value) => {
+        state[name] = value;
     }
 
-    return { count, increment }
+    return { state, setValue }
 })
 
 export default common

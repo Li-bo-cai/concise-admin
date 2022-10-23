@@ -1,15 +1,17 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
-        <div class="header"></div>
+      <el-header class="header">
+        <div></div>
       </el-header>
       <el-container>
         <el-aside width="200px">
-          <Menu></Menu>
+          <aside-menu></aside-menu>
         </el-aside>
         <el-main>
-          <router-view></router-view>
+          <el-scrollbar height="calc(100vh - 60px)">
+            <router-view></router-view>
+          </el-scrollbar>
         </el-main>
       </el-container>
     </el-container>
@@ -17,11 +19,16 @@
 </template>
 
 <script setup>
-import Menu from "@/components/menu/Menu.vue";
+import AsideMenu from "@/components/Aside/index.vue";
+
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss" >
 .header {
   background: #000;
+}
+
+.el-main {
+  padding: 0;
 }
 </style>
